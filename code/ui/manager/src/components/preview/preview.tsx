@@ -163,7 +163,8 @@ const Canvas: FC<{ withLoader: boolean; baseUrl: string; children?: never }> = (
               const channel = addons.getServerChannel();
 
               channel.on(PREVIEW_BUILDER_PROGRESS, (options) => {
-                setProgress(options);
+                const newProgress = options?.length ? options[0] : options
+                setProgress(newProgress);
               });
             } catch {
               //
